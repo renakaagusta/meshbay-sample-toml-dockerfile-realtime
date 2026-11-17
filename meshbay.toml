@@ -15,7 +15,7 @@ cpus = 0.5
 memory = "512M"
 
 [services.healthcheck]
-# `bun` is on PATH in a Railpack Bun runtime image, `curl` is not guaranteed, so the probe does not depend on it.
+# `bun` is on PATH in this image (`oven/bun`), `curl` is not installed, so the probe uses bun instead.
 command = ["CMD-SHELL", "bun -e \"const response = await fetch('http://127.0.0.1:8080/health'); process.exit(response.ok ? 0 : 1)\""]
 interval = "15s"
 timeout = "5s"
